@@ -99,11 +99,11 @@ Please refer to [Notebook](final-project.ipynb) for full interpretations. Below 
 
 1. Bias in Statistics
 
-![](figs/boro_time)
+![](figs/boro_time.png)
 
-![](figs/perp_time)
+![](figs/perp_time.png)
 
-![](figs/vic_time)
+![](figs/vic_time.png)
 
 2. Bias in Missing Values
 
