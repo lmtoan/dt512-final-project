@@ -6,34 +6,32 @@ Prepared by Toan Luong on December 7, 2018 as part of [UW DT512: Human Centered 
 
 Abstract
 ---
+**Full code and analysis are in the [Notebook](final-project.ipynb)**
 
-(motivations + research questions)
-(results)
-(recommendations - same as Conclusion)
+In this project, I explore the primary sources of data reporting biases with regards to the [NYC Shooting Incident dataset](https://data.cityofnewyork.us/Public-Safety/NYPD-Shooting-Incident-Data-Historic-/833y-fsy8). Based on the frequency plots spanning several years, the dataset reports a significantly higher number of shootings for Black, 18-24 years old, Male demographics (both perpetrators and victims), compared to that of other demographic groups. Such trend persists from 2013 to 2018 except a slight dip toward the recent year. With regards to where the shooting incidents took place, there exists a frequency skew toward lower-income boroughs in New York city such as Bronx and Brooklyn. Although difficult to avoid, these biases can be analysis pitfalls that journalists and government agencies might base upon to increase NYPD policing toward certain minorities or introduce discriminative policies toward certain perceived dangerous neighborhoods. When analyzing for missing values, I discover the same trend of a large number of Black and Black Hispanic victims, with more than 400 deaths, still have their perpetrators' information missing until year to date. This can be a warning sign for NYPD to revisit their treatment of assault cases of minorities, not just shooting incidents.
+
+My recommendation is that data scientists should be cautious about performing crime-related analyses solely on NYPD data. By cross-checking with other independent data sources or performing side-by-side comparison with similar statistics from other cities, the analyses can be more reliable and population sampling or data reporting bias from the different police departments can be mitigated. The last part of my analysis offers an interactive visualization map of all the shooting incidents in NYC for that year. Ideally, it can be a starting point for other researchers to include other crime-related statistics on NYC or other regions, so that the public can benefit from a fuller and less subjective evaluation of their neighborhood's safety.
+
+**Human-Center Design Considerations**
+
+I would also like to acknowledge several personal biases that might interfere with the formation of my research questions, treatment of the NYC Shooting Incident dataset, and subsequent data explorations. Given the places that I have resided, I have never encountered any shooting or other life-threatening crimes. Such gives me a limited understanding of the responsibilities, risks, legal considerations, and other factors that determine how NYPD and police departments are supposed to treat shooting incidents. As such, any speculations about NYPD operations or behaviors in this analysis should be treated as factual. Any statistical results from the NYC Open Data datasets are only applied to New York City. Such results are not representative of the United States population and their relationships with law enforcement forces. News outlets and political organizations should not extrapolate these results to their own states and cities.
 
 Human-Centered Design Considerations
 ---
-I would like to acknowledge several personal biases that might interfere with the formation of my research questions, treatment of the datasets, and subsequent data analyses.
-- As a foreigner with certain privileges, I never had an interaction with the police (except parking enforcement officers) and does not belong to demographic groups that typically suffer from police brutality. As the result, my analyses might not account for the complexities of the relationship between NYPD and its residents. Any calculations or speculations about NYPD operations or behaviors might be stated with limited knowledge and without first-hand experience.
-- I often find myself in constant news influx of wrongful police shootings and police brutality. As a liberal-leaning person, I am more likely to seek out negative evidences against NYPD operations in my statistical analyses.
-- Any statistical results from the NYC Open Data datasets are only applied to New York City. Such results are not representative of the United States population and their relationships with law enforcement forces. As an ethical data scientist, I need to warn news outlets and political organizations not to extrapolate these results about police shootings, to their own states and cities.
-
-Software Requirements
----
-All packages are open-sourced and free for use.
-
-Analysis
-- Python 3.6
-- Pandas/Numpy
-- Jupyter Notebook
-
-Visualization
-- Matplotlib
-- Folium
+(copy from conclusion)
 
 Usage Instructions
 ---
-(reproducibility session)
+This analysis is intended to be fully reproducible. Before running the following [Notebook](final-project.ipynb) cells, please ensure
+
+1. Clone the repository at https://github.com/lmtoan/dt512-final-project.git
+2. All the necessary data, already in the `/data` directory, are **extracted on 12/6/2018**. However, to use the most up-to-date data, please clear the folder and download [NYPD Shooting Incident Data *(Historic)*](https://data.cityofnewyork.us/Public-Safety/NYPD-Shooting-Incident-Data-Historic-/833y-fsy8) and [NYPD Shooting Incident Data *(Year To Date)*](https://data.cityofnewyork.us/Public-Safety/NYPD-Shooting-Incident-Data-Year-To-Date-/5ucz-vwe8). Ensure that they are transferred to `/data` directory and named `NYPD_Shooting_Incident_Data__Historic_.csv` and `NYPD_Shooting_Incident_Data__Year_To_Date_.csv`
+3. Ensure that the following software dependencies. Most come with the standard data science package offered by [Anaconda](https://www.anaconda.com/download/#macos):
+    - Python 3.6
+    - Pandas
+    - Numpy
+    - Matplotlib
+    - Folium (can be installed by `pip install folium`)
 
 Data
 ---
@@ -44,7 +42,7 @@ I will be using a combination of historic and year-to-date data that capture eve
 - [NYPD Shooting Incident Data *(Year To Date)*](https://data.cityofnewyork.us/Public-Safety/NYPD-Shooting-Incident-Data-Year-To-Date-/5ucz-vwe8). Created on June 5, 2018. Last updated on November 8, 2018.
 - These datasets share the same [data footnote](https://data.cityofnewyork.us/api/views/833y-fsy8/files/e4e3d86c-348f-4a16-a17f-19480c089429?download=true&filename=NYPD_Shootings_Incident_Level_Data_Footnotes.pdf) which details variables creation methods, exceptions, filtering guidelines, and addresses any data abnormalies and inconsistencies.
 
-Reviewed by Office of Management Analysis and Planning and provided by New York Police Department, the data provide a comprehensive view about "the shooting event, the location and time of occurrence, and information related to suspect and victim demographics". For the *Historic* dataset, there are 6,407 rows and 18 columns. For the *Year-to-date* dataset, there are 441 rows of similar 18 columns. I plan to merge these 2 datasets together since they have similar columns. These datasets are viewed more than 460 times and downloaded 75 times.
+Reviewed by Office of Management Analysis and Planning and provided by New York Police Department, the data provide a comprehensive view about "the shooting event, the location and time of occurrence, and information related to suspect and victim demographics". For the *Historic* dataset, there are 6,407 rows and 18 columns. For the *Year-to-date* dataset, there are 441 rows of similar 18 columns. These datasets are viewed more than 460 times and downloaded 75 times.
 
 Several limitations and potential biases are discussed in the following sections.
 
@@ -66,15 +64,13 @@ The rights to use the data for public research are mentioned in the umbrella [Te
 
 ### Limitations & Biases
 
-As stated in the dataset headers, the NYPD shooting incident data "is manually extracted every quarter and reviewed by the Office of Management Analysis and Planning before being posted on the NYPD website". Such scrutiny might result in excessive filtering of shooting incidents or metadata related to such incidents. Below is a quote from the data footnote that indicates the exclusion of non-injured police shootings. Omitting the non-injured shootings or gunpoint threats might under-estimate the impacts of NYPD historic patterns of excessive policing minorities. 
+As stated in the dataset headers, the NYPD shooting incident data "is manually extracted every quarter and reviewed by the Office of Management Analysis and Planning before being posted on the NYPD website". Such scrutiny might result in excessive filtering of shooting incidents or metadata related to such incidents. Below is a quote from the data footnote that indicates the exclusion of non-injured shooting incidents. Omitting a number of gun-assault related incidents might under-estimate the veracity of NYPD statistics and undermine claims about NYC's safety.
 
 > Only valid shooting incidents resulting in an injured victim are included in this release. Shooting incidents not resulting in an injured victim are classified according to the appropriate offense according to NYS Penal Law. 
 
 There is no description of data de-identification process to protect individuals' privacies. Below is a one-line instruction quoted from the data footnote, which should have been a standardized process given GDPR regulations.
 
 > Any attempt to match the approximate location of the incident to an exact address or link to other datasets is not recommended.
-
-The authoring agencies state that the *"data can be used by the public to explore the nature of shooting/criminal activity"*. Such description explicitly links police shootings with criminal activities. Because of such implicit biases, the datasets might not account for wrongful police shootings and other verbal and physical threats against minorities and communities at harm.
 
 ### Schema
 
@@ -97,15 +93,39 @@ The authoring agencies state that the *"data can be used by the public to explor
 | X_COORD_CD              | Midblock X-coordinate for New York State Plane Coordinate System, Long Island Zone, NAD 83, units feet (FIPS 3104)                                                                    | Number     |
 | Y_COORD_CD              | Midblock Y-coordinate for New York State Plane Coordinate System, Long Island Zone, NAD 83, units feet (FIPS 3104)                                                                    | Number     |
 
-
-Sources
+Deliverables
 ---
+Please refer to [Notebook](final-project.ipynb) for full interpretations. Below are the types of plots that can be produced by the notebook.
+
+1. Bias in Statistics
+
+![](figs/boro_time)
+
+![](figs/perp_time)
+
+![](figs/vic_time)
+
+2. Bias in Missing Values
+
+![](figs/perp_missing.png)
+![](figs/sex_race_missing.png)
+
+3. Bias in Geographical Distribution
+
+[2014 Interactive Map Visualization ](viz14.html) vs. [2018 Interactive Map Visualization ](viz18.html)
+
+References
+---
+Data source: https://opendata.cityofnewyork.us/
+
+Footnotes:
 1. https://www1.nyc.gov/site/nypd/stats/crime-statistics/crime-statistics-landing.page
 2. https://www.nytimes.com/2017/12/27/nyregion/new-york-city-crime-2017.html
 3. https://www.nytimes.com/2015/12/30/nyregion/bratton-rebukes-kelly-for-questioning-new-york-crime-data-shame-on-him.html
-4. https://wiki.communitydata.cc/upload/7/76/HCDS_2018_week_4_slides.pdf
+4. https://en.wikipedia.org/wiki/New_York_City_Police_Department_corruption_and_misconduct
+5. https://en.wikipedia.org/wiki/Demographics_of_New_York_City
 
-4. https://opendata.cityofnewyork.us/
-2. https://en.wikipedia.org/wiki/New_York_City_Police_Department_corruption_and_misconduct
-3. https://www.nytimes.com/2008/05/08/nyregion/08nypd.html
-4. https://www.newsweek.com/nypd-officers-shot-lowest-number-people-ever-2017-758205
+The project structure is inspired from the following repositories:
+- https://wiki.communitydata.cc/upload/7/76/HCDS_2018_week_4_slides.pdf
+- https://github.com/rexthompson/DATA-512-Final-Project
+- https://github.com/orbitse/data-512-finalproject
