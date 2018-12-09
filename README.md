@@ -4,6 +4,8 @@ Unless otherwise specified, any materials in this repository are released under 
 
 Prepared by Toan Luong on December 7, 2018 as part of [UW DT512: Human Centered Data Science](https://wiki.communitydata.cc/Human_Centered_Data_Science_(Fall_2018)) Final Project.
 
+The final presentation can be accessed [here](https://docs.google.com/presentation/d/1o8bpG7bKM39mIKT7Bqs3y2OxteckX2bFJzlrVBQVIwM/edit?usp=sharing)
+
 Abstract
 ---
 **Full code and analysis are in the [Notebook](final-project.ipynb)**
