@@ -12,13 +12,9 @@ In this project, I explore the primary sources of data reporting biases with reg
 
 My recommendation is that data scientists should be cautious about performing crime-related analyses solely on NYPD data. By cross-checking with other independent data sources or performing side-by-side comparison with similar statistics from other cities, the analyses can be more reliable and population sampling or data reporting bias from the different police departments can be mitigated. The last part of my analysis offers an interactive visualization map of all the shooting incidents in NYC for that year. Ideally, it can be a starting point for other researchers to include other crime-related statistics on NYC or other regions, so that the public can benefit from a fuller and less subjective evaluation of their neighborhood's safety.
 
-**Human-Center Design Considerations**
-
-I would also like to acknowledge several personal biases that might interfere with the formation of my research questions, treatment of the NYC Shooting Incident dataset, and subsequent data explorations. Given the places that I have resided, I have never encountered any shooting or other life-threatening crimes. Such gives me a limited understanding of the responsibilities, risks, legal considerations, and other factors that determine how NYPD and police departments are supposed to treat shooting incidents. As such, any speculations about NYPD operations or behaviors in this analysis should be treated as factual. Any statistical results from the NYC Open Data datasets are only applied to New York City. Such results are not representative of the United States population and their relationships with law enforcement forces. News outlets and political organizations should not extrapolate these results to their own states and cities.
-
 Human-Centered Design Considerations
 ---
-(copy from conclusion)
+I would also like to acknowledge several personal biases that might interfere with the formation of my research questions, treatment of the NYC Shooting Incident dataset, and subsequent data explorations. Given the places that I have resided, I have never encountered any shooting or other life-threatening crimes. Such gives me a limited understanding of the responsibilities, risks, legal considerations, and other factors that determine how NYPD and police departments are supposed to treat shooting incidents. As such, any speculations about NYPD operations or behaviors in this analysis should be treated as factual. Any statistical results from the NYC Open Data datasets are only applied to New York City. Such results are not representative of the United States population and their relationships with law enforcement forces. News outlets and political organizations should not extrapolate these results to their own states and cities.
 
 Usage Instructions
 ---
